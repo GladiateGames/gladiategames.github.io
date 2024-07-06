@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GladiateGames</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        header {
+            background-color: #1abc9c;
+            color: #ffffff;
+            padding: 1rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        main {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .game-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            padding: 1rem;
+        }
+
+        .game-card {
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            border-radius: 12px;
+            padding: 1rem;
+            width: 220px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .game-card img {
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            max-width: 100%;
+        }
+
+        .game-card h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1.5rem;
+            color: #34495e;
+        }
+
+        .game-card a {
+            display: inline-block;
+            margin-top: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .game-card a:hover {
+            background-color: #2980b9;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>GladiateGames</h1>
+    </header>
+    <main>
+        <div class="game-container">
+            <div class="game-card">
+                <img src="https://i.ibb.co/G03B1V4/Pyffqc-YSf-Uz7t-MMEm-4h-N5tqt87-Gnwkzur-I7n-BBWb3tz-EN9-BOek-JALi-Sk-OY2-Zrm2zu-L1-Gy-Mbl-A-9-Kk-s28.webp" alt="Angry Birds Showdown">
+                <h3>Angry Birds Showdown</h3>
+                <a href="https://3411367406589369055.playables.usercontent.goog/v/assets/index.html">Play Now</a>
+            </div>
+            <div class="game-card">
+                <img src="path/to/game2.jpg" alt="Game 2">
+                <h3>Game 2</h3>
+                <a href="games/game2.html">Play Now</a>
+            </div>
+            <div class="game-card">
+                <img src="path/to/game3.jpg" alt="Game 3">
+                <h3>Game 3</h3>
+                <a href="games/game3.html">Play Now</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
