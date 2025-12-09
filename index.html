@@ -3,103 +3,286 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GladiateGames</title>
+    <title>GladiateGames | Play Free Online Games</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --bg-dark: #0f1014;
+            --bg-card: #1b1e26;
+            --text-light: #ffffff;
+            --text-gray: #b2b2b2;
+            --accent: #00cec9;
+        }
+
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
-            color: #333;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
         }
 
+        /* --- Navbar --- */
         header {
-            background-color: #1abc9c;
-            color: #ffffff;
-            padding: 1rem 0;
+            background-color: rgba(27, 30, 38, 0.95);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #2d3436;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 4rem 2rem;
             text-align: center;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #2d3436;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--secondary-color), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+        }
+
+        /* --- Search & Grid --- */
         main {
-            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 2rem;
         }
 
-        .game-container {
+        .search-bar {
+            margin-bottom: 2rem;
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            padding: 1rem;
         }
 
-        .game-card {
-            background-color: #ffffff;
-            border: 1px solid #dddddd;
-            border-radius: 12px;
+        .search-bar input {
             padding: 1rem;
-            width: 220px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 50px;
+            border: none;
+            background-color: var(--bg-card);
+            color: white;
+            font-family: inherit;
+            outline: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 1rem;
+        }
+
+        .game-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        /* --- Game Cards --- */
+        .game-card {
+            background-color: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        .game-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(108, 92, 231, 0.2); /* Glow effect */
+        }
+
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            overflow: hidden;
         }
 
         .game-card img {
-            border-radius: 12px;
-            margin-bottom: 1rem;
-            max-width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .game-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 1.2rem;
         }
 
         .game-card h3 {
             margin: 0 0 0.5rem;
-            font-size: 1.5rem;
-            color: #34495e;
+            font-size: 1.2rem;
+            color: var(--text-light);
         }
 
-        .game-card a {
-            display: inline-block;
-            margin-top: 0.5rem;
-            padding: 0.5rem 1rem;
-            background-color: #3498db;
+        .game-card .category {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .play-btn {
+            display: block;
+            width: 100%;
+            padding: 0.8rem 0;
+            background-color: var(--primary-color);
             color: #fff;
+            text-align: center;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 8px;
+            font-weight: 600;
             transition: background-color 0.3s;
         }
 
-        .game-card a:hover {
-            background-color: #2980b9;
+        .play-btn:hover {
+            background-color: var(--secondary-color);
         }
 
-        .game-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        /* --- Badge --- */
+        .badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #e84393;
+            color: white;
+            padding: 0.2rem 0.6rem;
+            font-size: 0.7rem;
+            border-radius: 4px;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid #2d3436;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .hero h2 { font-size: 2rem; }
+            .game-container { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>GladiateGames</h1>
+        <div class="logo">Gladiate<span>Games</span></div>
+        <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Popular</a>
+            <a href="#">New</a>
+        </nav>
     </header>
+
+    <div class="hero">
+        <h2>Level Up Your Downtime</h2>
+        <p>Play the best browser games instantly. No downloads, no login required.</p>
+    </div>
+
     <main>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for games...">
+        </div>
+
+        <h2 class="section-title">Trending Now</h2>
+
         <div class="game-container">
             <div class="game-card">
-                <img src="https://i.ibb.co/G03B1V4/Pyffqc-YSf-Uz7t-MMEm-4h-N5tqt87-Gnwkzur-I7n-BBWb3tz-EN9-BOek-JALi-Sk-OY2-Zrm2zu-L1-Gy-Mbl-A-9-Kk-s28.webp" alt="Angry Birds Showdown">
-                <h3>Angry Birds Showdown</h3>
-                <a href="games/angry-birds-showdown.html">Play Now</a>
+                <span class="badge">HOT</span>
+                <div class="image-wrapper">
+                    <img src="https://i.ibb.co/G03B1V4/Pyffqc-YSf-Uz7t-MMEm-4h-N5tqt87-Gnwkzur-I7n-BBWb3tz-EN9-BOek-JALi-Sk-OY2-Zrm2zu-L1-Gy-Mbl-A-9-Kk-s28.webp" alt="Angry Birds Showdown">
+                </div>
+                <div class="card-content">
+                    <span class="category">Action / Strategy</span>
+                    <h3>Angry Birds Showdown</h3>
+                    <a href="games/angry-birds-showdown.html" class="play-btn">Play Now</a>
+                </div>
             </div>
+
             <div class="game-card">
-                <img src="https://yt3.ggpht.com/QE7R_HfS1wLAXrIK8I6cJYX1u9WOiUA9FjHJVBzoAoRB7u8cOj6CzvG9sQMVc4R9xX2wX1gBJ4WQN50=s288-rw-nd-v1" alt="Fork N Sausage">
-                <h3>Fork N Sausage</h3>
-                <a href="games/fork-n-sausage.html">Play Now</a>
+                <div class="image-wrapper">
+                    <img src="https://i.ibb.co/0RL3bmgd/fork-n-sausage-16x9-cover-auto-format-compress-q-65-cs-strip-ch-DPR-fit-crop.jpg" alt="Fork N Sausage">
+                </div>
+                <div class="card-content">
+                    <span class="category">Puzzle / Casual</span>
+                    <h3>Fork N Sausage</h3>
+                    <a href="games/fork-n-sausage.html" class="play-btn">Play Now</a>
+                </div>
             </div>
+            
         </div>
     </main>
+
+    <footer>
+        <p>&copy; 2024-2025 GladiateGames. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
